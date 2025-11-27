@@ -1,9 +1,12 @@
 export interface User {
   user: {
     id: number,
-    usuario: string,
-    correo: string,
+    nombre_usuario: string,
+    email: string,
     clave: string,
+    rol: string,
+    fecha_registro: Date,
+    activo: boolean
   }
 
 }

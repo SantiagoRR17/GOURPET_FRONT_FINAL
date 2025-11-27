@@ -18,20 +18,26 @@
                                     <p>Registro de usuario</p>
                                 </div>
                                 <hr>
-                                <form class="user">
+                                <form class="user" #f="ngForm" (ngSubmit)="onRegister(f)">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="exampleInputUsername" placeholder="Nombre de usuario..."
+                                            name="nombre_usuario" ngModel required>
+                                    </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Escribir correo...">
+                                            placeholder="Escribir correo..." name="email" ngModel required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Escribir contraseña...">
+                                            id="exampleInputPassword" placeholder="Escribir contraseña..."
+                                            name="clave" ngModel required>
                                     </div>
 
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Registrarse
-                                    </a>                                                                       
+                                    </button>                                                                       
                                 </form>
                                 <hr>                                
                                 <div class="text-center">

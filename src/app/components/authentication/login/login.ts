@@ -22,11 +22,20 @@ export class Login {
   }
 
   onLogin(form: any): void {
-    this.authenticationService.login(form.value).subscribe(
-      (res) => {
-        localStorage.setItem('accessToken',JSON.parse(JSON.stringify(res)).accessToken);
-        this.router.navigateByUrl('/animal');
+    this.authenticationService.login(form.value).subscribe({
+      next: (res) => {
+        if (res && res.accessToken) {
+          localStorage.setItem('accessToken', res.accessToken);
+          this.router.navigateByUrl('/animal');
+        } else {
+          console.error('La respuesta no contiene el token esperado:', res);
+          alert('Error en el inicio de sesión: No se recibió el token.');
+        }
+      },
+      error: (err) => {
+        console.error('Error en el login:', err);
+        alert('Error al iniciar sesión. Verifica tus credenciales.');
       }
-    );
+    });
   }
 }
