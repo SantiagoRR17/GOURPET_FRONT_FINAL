@@ -26,7 +26,14 @@ export class Login {
       next: (res) => {
         if (res && res.accessToken) {
           localStorage.setItem('accessToken', res.accessToken);
-          this.router.navigateByUrl('/animal');
+          
+          // Decodificar el token para obtener el ID del usuario
+          const tokenPayload = this.parseJwt(res.accessToken);
+          if (tokenPayload && tokenPayload.id) {
+            localStorage.setItem('userId', tokenPayload.id);
+          }
+
+          this.router.navigateByUrl('/recetas');
         } else {
           console.error('La respuesta no contiene el token esperado:', res);
           alert('Error en el inicio de sesión: No se recibió el token.');
@@ -37,5 +44,15 @@ export class Login {
         alert('Error al iniciar sesión. Verifica tus credenciales.');
       }
     });
+  }
+
+  parseJwt(token: string) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
   }
 }
