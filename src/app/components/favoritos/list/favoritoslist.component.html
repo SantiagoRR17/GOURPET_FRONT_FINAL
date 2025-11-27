@@ -1,0 +1,14 @@
+<div class="favoritos-wrapper">
+  <h2 class="titulo">Mis Favoritos</h2>
+
+  <div *ngIf="favoritos.length === 0" class="no-favoritos">
+    No tienes recetas en favoritos.
+  </div>
+
+  <div class="favorito-card" *ngFor="let fav of favoritos">
+    <p><strong>ID Receta:</strong> {{ fav.receta }}</p>
+    <button class="btn-eliminar" (click)="eliminarFavorito(fav._id)">
+      Eliminar
+    </button>
+  </div>
+</div>
