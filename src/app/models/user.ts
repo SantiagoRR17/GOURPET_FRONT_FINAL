@@ -1,12 +1,9 @@
 export interface User {
-  user: {
-    id: number,
-    nombre_usuario: string,
-    email: string,
-    clave: string,
-    rol: string,
-    fecha_registro: Date,
-    activo: boolean
-  }
-
+    _id?: string;
+    nombre_usuario: string;
+    email: string;
+    clave?: string;
+    rol: 'invitado' | 'dueño' | 'administrador';
+    activo: boolean;
+    fecha_registro?: Date;
 }

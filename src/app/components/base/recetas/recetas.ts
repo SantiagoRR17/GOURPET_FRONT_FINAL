@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RecetaService } from '../../../services/receta-service';
+import { UserService } from '../../../services/user-service';
 import { take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Menu } from '../../menu/menu';
@@ -18,6 +19,7 @@ import { Receta } from '../../../models/receta';
 export class Recetas {
 
   constructor(private recetaService: RecetaService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) {
@@ -31,11 +33,25 @@ export class Recetas {
   editableReceta: boolean = false;
   idReceta: any;
   user = 'Usuario';
+  userRole: string = '';
+  currentUserId: string | null = '';
 
   ngOnInit() {
     const token = localStorage.getItem("accessToken");
+    this.currentUserId = localStorage.getItem('userId');
 
     if (token) {
+      // Obtener rol del usuario
+      if (this.currentUserId) {
+        this.userService.getOneUser(token, this.currentUserId).subscribe(
+          (userData) => {
+            this.userRole = userData.rol;
+            this.user = userData.nombre_usuario;
+          },
+          (error) => console.error('Error al obtener rol', error)
+        );
+      }
+
       this.recetaForm = this.formBuilder.group({
         nombre: ['', Validators.required],
         descripcion: ['', Validators.required],

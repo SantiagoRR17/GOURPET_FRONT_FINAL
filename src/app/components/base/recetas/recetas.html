@@ -94,7 +94,7 @@
 
                 <div class="">
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button *ngIf="userRole === 'administrador' || userRole === 'dueño'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Registrar receta
                   </button>
                 </div>
@@ -109,8 +109,8 @@
                         <th scope="col">Tipo Dieta</th>
                         <th scope="col">Especie</th>
                         <th scope="col">Publicada</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col" *ngIf="userRole !== 'invitado'">Editar</th>
+                        <th scope="col" *ngIf="userRole !== 'invitado'">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -121,12 +121,18 @@
                         <td>{{item.tipo_dieta}}</td>
                         <td>{{item.especie}}</td>
                         <td>{{item.publicada ? 'Sí' : 'No'}}</td>
-                        <td><button type="button" class="btn btn-primary" (click)="toggleEditReceta(item._id)">
+                        <td *ngIf="userRole !== 'invitado'">
+                          <button *ngIf="userRole === 'administrador' || (userRole === 'dueño' && item.creada_por === currentUserId)" 
+                                  type="button" class="btn btn-primary" (click)="toggleEditReceta(item._id)">
                             <i class="bi bi-pencil-square"></i>
-                          </button></td>
-                        <td><button type="button" class="btn btn-primary" (click)="deleteRecetaEntry(item._id)">
+                          </button>
+                        </td>
+                        <td *ngIf="userRole !== 'invitado'">
+                          <button *ngIf="userRole === 'administrador' || (userRole === 'dueño' && item.creada_por === currentUserId)" 
+                                  type="button" class="btn btn-primary" (click)="deleteRecetaEntry(item._id)">
                             <i class="bi bi-trash"></i>
-                          </button></td>
+                          </button>
+                        </td>
                       </tr>
                   </table>
                 </div>
