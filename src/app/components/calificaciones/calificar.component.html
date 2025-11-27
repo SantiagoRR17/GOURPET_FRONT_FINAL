@@ -1,0 +1,48 @@
+<div class="calificar-page">
+  <div class="calificar-card">
+    <h2>Calificar receta</h2>
+    <p class="subtitle">
+      Deja tu opinión para recordar qué recetas le encantaron a tu mascota.
+    </p>
+
+    <form (ngSubmit)="enviarCalificacion()" #f="ngForm" class="calificar-form">
+
+      <label for="recetaId">ID de la receta</label>
+      <input
+        id="recetaId"
+        type="text"
+        name="recetaId"
+        [(ngModel)]="recetaId"
+        placeholder="Ej: 675a1c9f8b23..."
+        required
+      />
+
+      <label for="puntaje">Puntaje</label>
+      <select
+        id="puntaje"
+        name="puntaje"
+        [(ngModel)]="puntaje"
+        required
+      >
+        <option [ngValue]="1">1 - No le gustó</option>
+        <option [ngValue]="2">2 - Regular</option>
+        <option [ngValue]="3">3 - Bien</option>
+        <option [ngValue]="4">4 - Le gustó mucho</option>
+        <option [ngValue]="5">5 - Le encantó</option>
+      </select>
+
+      <label for="comentario">Comentario</label>
+      <textarea
+        id="comentario"
+        name="comentario"
+        rows="4"
+        [(ngModel)]="comentario"
+        placeholder="Describe cómo reaccionó tu mascota, si repetirías la receta, etc."
+      ></textarea>
+
+      <button type="submit" class="btn-primary btn-block">
+        Enviar calificación
+      </button>
+    </form>
+  </div>
+</div>

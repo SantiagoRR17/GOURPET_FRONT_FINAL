@@ -4,10 +4,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { RecetaService } from '../../../services/receta-service';
 import { UserService } from '../../../services/user-service';
+import { FavoritosService } from '../../../services/favoritos-service';
 import { take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Menu } from '../../menu/menu';
 import { Receta } from '../../../models/receta';
+import { Favorito } from '../../../models/favorito';
 
 @Component({
   selector: 'app-recetas',
@@ -20,6 +22,7 @@ export class Recetas {
 
   constructor(private recetaService: RecetaService,
     private userService: UserService,
+    private favoritosService: FavoritosService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) {
@@ -199,5 +202,36 @@ export class Recetas {
   cancelEdit() {
     this.editableReceta = false;
     this.recetaForm.reset();
+  }
+
+  addToFavorites(recetaId: any) {
+    const token = localStorage.getItem('accessToken');
+    if (!this.currentUserId) {
+      this.toastr.error('Debes iniciar sesión para agregar favoritos', 'Error');
+      return;
+    }
+
+    const favorito: Partial<Favorito> = {
+      usuario: this.currentUserId,
+      receta: recetaId
+    };
+
+    this.favoritosService.addFavorito(token, favorito).subscribe(
+      (res: any) => {
+        if (res.message) {
+          this.toastr.info(res.message, 'Información');
+        } else {
+          this.toastr.success('Receta agregada a favoritos', 'Éxito');
+        }
+      },
+      (error) => {
+        console.error('Error al agregar favorito:', error);
+        if (error.status === 404) {
+          this.toastr.error('No se encontró el servicio de favoritos. ¿Reiniciaste el backend?', 'Error 404');
+        } else {
+          this.toastr.error('Error al agregar a favoritos', 'Error');
+        }
+      }
+    );
   }
 }

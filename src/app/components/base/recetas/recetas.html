@@ -109,6 +109,7 @@
                         <th scope="col">Tipo Dieta</th>
                         <th scope="col">Especie</th>
                         <th scope="col">Publicada</th>
+                        <th scope="col" *ngIf="userRole === 'dueño' || userRole === 'invitado'">Favorito</th>
                         <th scope="col" *ngIf="userRole !== 'invitado'">Editar</th>
                         <th scope="col" *ngIf="userRole !== 'invitado'">Eliminar</th>
                       </tr>
@@ -121,6 +122,11 @@
                         <td>{{item.tipo_dieta}}</td>
                         <td>{{item.especie}}</td>
                         <td>{{item.publicada ? 'Sí' : 'No'}}</td>
+                        <td *ngIf="userRole === 'dueño' || userRole === 'invitado'">
+                          <button type="button" class="btn btn-warning btn-sm" (click)="addToFavorites(item._id)" title="Agregar a favoritos">
+                            <i class="fas fa-heart"></i>
+                          </button>
+                        </td>
                         <td *ngIf="userRole !== 'invitado'">
                           <button *ngIf="userRole === 'administrador' || (userRole === 'dueño' && item.creada_por === currentUserId)" 
                                   type="button" class="btn btn-primary" (click)="toggleEditReceta(item._id)">
