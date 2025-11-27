@@ -1,0 +1,20 @@
+<div class="calificar-wrapper">
+  <h2>Calificar Receta</h2>
+
+  <div class="form-container">
+
+    <label>ID de la Receta</label>
+    <input type="text" [(ngModel)]="recetaId" placeholder="ID de receta" />
+
+    <label>Puntaje</label>
+    <select [(ngModel)]="puntaje">
+      <option *ngFor="let p of [1,2,3,4,5]" [value]="p">{{ p }}</option>
+    </select>
+
+    <label>Comentario (opcional)</label>
+    <textarea rows="4" [(ngModel)]="comentario"></textarea>
+
+    <button (click)="enviarCalificacion()">Enviar</button>
+
+  </div>
+</div>

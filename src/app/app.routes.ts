@@ -8,6 +8,7 @@ import { Users } from './components/base/users/users';
 import { Logout } from './components/authentication/logout/logout';
 import { Recetas } from './components/base/recetas/recetas';
 import { FavoritosListComponent } from './components/favoritos/list/favoritoslist.component';
+import { CalificarComponent } from './components/calificaciones/calificar.component';
 
 export const routes: Routes = [
     {path: 'login', component: Login},
@@ -17,6 +18,8 @@ export const routes: Routes = [
     {path: 'users', component: Users},
     {path: 'logout', component: Logout},
     {path: 'recetas', component: Recetas},
-    { path: 'favoritos', component: FavoritosListComponent },
+    {path: 'favoritos', component: FavoritosListComponent },
+    { path: 'calificar', component: CalificarComponent },
+
 
 ];
