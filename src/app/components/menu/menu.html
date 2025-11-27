@@ -1,88 +1,67 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- Sidebar Gourpet -->
+<ul class="sidebar-gourpet" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-hippo"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">GOURPET</div>
+  <!-- Marca -->
+  <li class="sidebar-brand">
+    <div class="brand-content">
+      <span class="logo">🐾</span>
+      <span class="brand-text">Gourpet</span>
+    </div>
+  </li>
+
+  <hr class="sidebar-divider">
+
+  <!-- Inicio -->
+  <li class="nav-item">
+    <a class="nav-link" href="/animal">
+      <i class="fas fa-home"></i>
+      <span>Inicio</span>
+    </a>
+  </li>
+
+  <hr class="sidebar-divider">
+
+  <!-- Recetas -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-toggle="collapse"
+       href="#collapseRecetas" aria-expanded="false">
+      <i class="fas fa-utensils"></i>
+      <span>Recetas</span>
+      <i class="fas fa-chevron-down collapse-arrow"></i>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <div id="collapseRecetas" class="collapse submenu">
+      <a class="collapse-item" href="/recetas">Nueva receta</a>
+      <a class="collapse-item" href="/recetas">Lista de recetas</a>
+    </div>
+  </li>
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/animal">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Inicio</span></a>
-    </li>
+  <!-- Favoritos -->
+  <li class="nav-item">
+    <a class="nav-link" href="/favoritos">
+      <i class="fas fa-heart"></i>
+      <span>Mis favoritos</span>
+    </a>
+  </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+  <!-- Calificaciones -->
+  <li class="nav-item">
+    <a class="nav-link" href="/calificar">
+      <i class="fas fa-star"></i>
+      <span>Calificar recetas</span>
+    </a>
+  </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimal" aria-expanded="true"
-            aria-controls="collapseAnimal">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Animales</span>
-        </a>
-        <div id="collapseAnimal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/animal">Nuevo animal</a>
-                <a class="collapse-item" href="/animal">Lista animales</a>
-            </div>
-        </div>
-    </li>
+  <hr class="sidebar-divider">
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArea" aria-expanded="true"
-            aria-controls="collapseArea">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Areas</span>
-        </a>
-        <div id="collapseArea" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/animal">Nueva area</a>
-                <a class="collapse-item" href="/animal">Lista areas</a>
-            </div>
-        </div>
-    </li>
+  <!-- Salir -->
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Salir</span>
+    </a>
+  </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/favoritos">
-            <i class="fas fa-heart"></i>
-            <span>Mis Favoritos</span>
-        </a>
-    </li>
-
-
-   <li class="nav-item">
-       <a class="nav-link" href="/calificar">
-           <i class="fas fa-star"></i>
-           <span>Calificar Receta</span>
-       </a>
-   </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="logout">
-            <i class="fas fa-fw fa-sign-out-alt"></i>
-            <span>Salir</span></a>
-    </li>
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
+  <hr class="sidebar-divider">
 
 </ul>
-<!-- End of Sidebar -->

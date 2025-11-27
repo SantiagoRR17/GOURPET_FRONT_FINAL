@@ -1,58 +1,57 @@
-<div class="container">
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+<div class="auth-page">
 
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">¡Bienvenidos!</h1>
-                                </div>                            
-                                <div class="text-center">
-                                    <p>Registro de usuario</p>
-                                </div>
-                                <hr>
-                                <form class="user" #f="ngForm" (ngSubmit)="onRegister(f)">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleInputUsername" placeholder="Nombre de usuario..."
-                                            name="nombre_usuario" ngModel required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Escribir correo..." name="email" ngModel required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Escribir contraseña..."
-                                            name="clave" ngModel required>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Registrarse
-                                    </button>                                                                       
-                                </form>
-                                <hr>                                
-                                <div class="text-center">
-                                    <a class="small" href="login">¿Ya tienes cuenta? Inicia sesión</a>
-                                    <br>
-                                    <a class="small" href="">Ir al inicio</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="logo">🐾</span>
+      <span class="brand-name">Gourpet</span>
     </div>
+
+    <h2 class="auth-title">Crear cuenta</h2>
+    <p class="auth-subtitle">
+      Regístrate para empezar a guardar recetas, marcar favoritas y compartir calificaciones.
+    </p>
+
+    <form #f="ngForm" (ngSubmit)="onRegister(f)" class="auth-form">
+
+      <label for="nombre_usuario">Nombre de usuario</label>
+      <input
+        id="nombre_usuario"
+        type="text"
+        name="nombre_usuario"
+        ngModel
+        required
+        placeholder="Ej: bogotrash"
+      />
+
+      <label for="email">Correo electrónico</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        ngModel
+        required
+        placeholder="tucorreo@ejemplo.com"
+      />
+
+      <label for="clave">Contraseña</label>
+      <input
+        id="clave"
+        type="password"
+        name="clave"
+        ngModel
+        required
+        placeholder="Mínimo 6 caracteres"
+      />
+
+      <button type="submit" class="btn-primary btn-block">
+        Crear cuenta
+      </button>
+    </form>
+
+    <p class="auth-footer">
+      ¿Ya tienes una cuenta?
+      <a href="/login">Iniciar sesión</a>
+    </p>
+  </div>
 
 </div>
